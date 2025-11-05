@@ -1,40 +1,58 @@
-# so_long Makefile (Linux version)
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/11/06 00:25:21 by marvin            #+#    #+#              #
+#    Updated: 2025/11/06 00:25:21 by marvin           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME    = so_long
-CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
+NAME       = so_long
 
-# Paths
-LIBFT_DIR   = ./libft
-LIBFT       = $(LIBFT_DIR)/libft.a
-MLX_DIR     = ./mlx_linux
+#SRC        = ... 
 
-# Source files
-SRCS := $(wildcard *.c src/*.c)
-OBJS := $(SRCS:.c=.o)
+CC         = clang
+RM         = rm -rf
+CFLAGS     = -Wall -Wextra -Werror -g
+OBJS       = $(SRC:.c=.o)
 
-# Libraries
-LIBS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+#MLX_DIR    = mlx
+#MLX        = $(MLX_DIR)/libmlx.a
+#MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
 
-# Include directories
-INCLUDES = -I$(MLX_DIR) -I$(LIBFT_DIR) -Iinc
+LIBFT_DIR  = ./library/libft
+LIBFT  = $(LIBFT_DIR)/libft.a
+#INCLUDES = -I/usr/include -I$(MLX_DIR) -I$(LIBFT_DIR)/includes
 
-all: $(LIBFT) $(NAME)
+
+all: $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) --quiet -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIBS) -o $(NAME)
+#$(MLX):
+#	$(MAKE) --quiet -C $(MLX_DIR)
+
+#$(NAME): $(LIBFT) $(MLX) $(OBJS)
+#	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
+
+#.c.o:
+#	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)*/
 
 clean:
 	rm -f $(OBJS)
-	@$(MAKE) clean -C $(LIBFT_DIR)
+	$(MAKE) --quiet -C $(LIBFT_DIR) clean
+	$(MAKE) --quiet -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) --quiet -C $(LIBFT_DIR) fclean
+	# $(MAKE) --quiet -C $(MLX_DIR) fclean
+
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re rebonus libft ft_printf
