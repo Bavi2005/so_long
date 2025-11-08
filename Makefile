@@ -12,20 +12,22 @@
 
 NAME       = so_long
 
-#SRC        = ... 
+SRC        = src/get_map.c src/map_utils.c  src/check_valid_map.c \
+				src/setup_window.c src/path_checker.c src/graphics_utils.c \
+				src/player_movement.c src/main.c src/flood_fill.c
 
 CC         = clang
 RM         = rm -rf
 CFLAGS     = -Wall -Wextra -Werror -g
 OBJS       = $(SRC:.c=.o)
 
-#MLX_DIR    = mlx
-#MLX        = $(MLX_DIR)/libmlx.a
-#MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_DIR    = mlx
+MLX        = $(MLX_DIR)/libmlx.a
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/X11 -lXext -lX11
 
 LIBFT_DIR  = ./library/libft
 LIBFT  = $(LIBFT_DIR)/libft.a
-#INCLUDES = -I/usr/include -I$(MLX_DIR) -I$(LIBFT_DIR)/includes
+INCLUDES = -I/usr/include -I$(MLX_DIR) -I$(LIBFT_DIR)/includes
 
 
 all: $(NAME)
@@ -33,14 +35,14 @@ all: $(NAME)
 $(LIBFT):
 	$(MAKE) --quiet -C $(LIBFT_DIR)
 
-#$(MLX):
-#	$(MAKE) --quiet -C $(MLX_DIR)
+$(MLX):
+	$(MAKE) --quiet -C $(MLX_DIR)
 
-#$(NAME): $(LIBFT) $(MLX) $(OBJS)
-#	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MLX_FLAGS) $(LIBFT)
 
-#.c.o:
-#	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)*/
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)*/
 
 clean:
 	rm -f $(OBJS)

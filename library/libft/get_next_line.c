@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpichyal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 14:51:07 by bpichyal          #+#    #+#             */
-/*   Updated: 2025/06/14 14:51:09 by bpichyal         ###   ########.fr       */
+/*   Updated: 2025/11/08 23:40:56 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 char	*read_tukar(int fd, char *bowl, char *bucket, int *byte_read)
 {

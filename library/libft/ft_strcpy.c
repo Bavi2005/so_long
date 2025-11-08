@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/08 23:43:29 by bpichyal          #+#    #+#             */
-/*   Updated: 2025/11/08 23:43:29 by bpichyal         ###   ########.fr       */
+/*   Created: 2025/11/09 00:24:59 by bpichyal          #+#    #+#             */
+/*   Updated: 2025/11/09 00:25:00 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strcpy(char *dest, const char *src)
 {
-    t_game  game;
+    int i = 0;
 
-    if (ac !=2)
+    while (src[i])
     {
-        return_error("Invalid number of arguments");
-        return (1);
+        dest[i] = src[i];
+        i++;
     }
-    game.map = get_map(av[1], &game);
-    if (!game.map)
-        return (1);
-    setup_window(&game);
-    return (0);
+    dest[i] = '\0';
+    return (dest);
 }

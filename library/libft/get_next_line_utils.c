@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpichyal <bpichyal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 16:24:28 by bpichyal          #+#    #+#             */
-/*   Updated: 2025/06/17 10:54:18 by bpichyal         ###   ########.fr       */
+/*   Updated: 2025/11/09 00:13:45 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -35,7 +36,7 @@ int	has_fish(char *s)
 	return (0);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dest;
 	int		i;
@@ -59,34 +60,36 @@ char	*ft_strdup(char *src)
 	return (dest);
 }
 
-static void	ft_copyjoin(char *new, char *s1, const char *s2)
+static void	ft_copyjoin(char *new, const char *s1, const char *s2)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	j = 0;
 	while (s1[i])
 	{
 		new[i] = s1[i];
 		i++;
 	}
+	j = 0;
 	while (s2[j])
+	{
 		new[i++] = s2[j++];
+	}
 	new[i] = '\0';
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*new;
 
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)
-		return (ft_strdup((char *)s2));
+		return (ft_strdup(s2));
 	if (!s2)
-		return (s1);
-	new = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+		return (ft_strdup(s1));
+	new = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new)
 		return (NULL);
 	ft_copyjoin(new, s1, s2);
