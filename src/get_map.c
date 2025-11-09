@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2025/11/08 23:52:31 by bpichyal          #+#    #+#             */
-/*   Updated: 2025/11/08 23:52:31 by bpichyal         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bpichyal <bpichyal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/09 15:24:38 by bpichyal          #+#    #+#             */
+/*   Updated: 2025/11/09 15:24:38 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +17,7 @@ int	check_file_name(char *file_path)
 {
 	char	*base;
 	int		len;
-	int		i;
 
-	i = 0;
 	base = ft_strrchr(file_path, '/');
 	if (base)
 		base = base + 1;
