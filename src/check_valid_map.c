@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2025/11/08 23:59:44 by bpichyal          #+#    #+#             */
 /*   Updated: 2025/11/08 23:59:44 by bpichyal         ###   ########.fr       */
 /*                                                                            */
@@ -34,7 +37,7 @@ static int	count_elements(char **map, int height, int width, char element)
 	return (count);
 }
 
-static int	check_elements(char **map, int height, int width)
+int	check_elements(char **map, int height, int width)
 {
 	int	y;
 	int	x;
@@ -98,31 +101,18 @@ int	is_map_valid(char **map, int height, int width, t_game *game)
 	int	player_count;
 	int	collect_count;
 
-	if (height < 3 || width < 3)
-	{
-		return_error("Invalid map: Too small or empty lines");
+	if (check_basic_validations(map, height, width))
 		return (1);
-	}
-	if (check_elements(map, height, width) == 1)
-	{
-		return_error("Invalid map: Invalid element");
-		return (1);
-	}
-	exit_count   = count_elements(map, height, width, 'E');
+	exit_count = count_elements(map, height, width, 'E');
 	player_count = count_elements(map, height, width, 'P');
 	collect_count = count_elements(map, height, width, 'C');
 	if (exit_count != 1 || player_count != 1 || collect_count == 0)
-	{
-		return_error("Invalid map: Missing or too many elements");
-		return (1);
-	}
+		return (return_error("Invalid map: Missing or too many elements"));
 	game->collectible_count = collect_count;
 	if (check_upper_lower_walls(map, width, height) == 1
 		|| check_side_walls(map, height, width) == 1)
 		return (return_error("Invalid map: Missing walls"));
-
 	if (flood_fill(map, height, width, game) == 1)
 		return (1);
-
 	return (0);
 }

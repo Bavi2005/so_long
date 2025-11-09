@@ -18,7 +18,8 @@ static void	can_reach_element(char **map, t_pos player, t_game *game)
 		|| map[player.y] == NULL
 		|| map[player.y][player.x] == '\0')
 		return ;
-	if (map[player.y][player.x] == '1' || map[player.y][player.x] == 'X' || map[player.y][player.x] == 'E')
+	if (map[player.y][player.x] == '1' || map[player.y][player.x] == 'X'
+		|| map[player.y][player.x] == 'E')
 	{
 		if (map[player.y][player.x] == 'E')
 			game->path_exit_found = 1;

@@ -54,7 +54,7 @@ void	cleanup(t_game *game)
 	free_map(game->map, game->height);
 }
 
-void *return_error_null(char *message)
+void	*return_error_null(char *message)
 {
 	write(1, "Error\n", 6);
 	if (message && *message)

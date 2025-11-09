@@ -13,7 +13,7 @@
 #include "so_long.h"
 #include "../library/libft/ft_printf.h"
 
-int return_error(char *message)
+int	return_error(char *message)
 {
 	write(1, "Error\n", 6);
 	if (message && *message)

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -63,7 +62,6 @@ typedef struct s_game
 	int			path_exit_found;
 }	t_game;
 
-
 int		return_error(char *message);
 void	*return_error_null(char *message);
 
@@ -77,6 +75,8 @@ int		flood_fill(char **map, int height, int width, t_game *game);
 int		path_checker(char **map, t_pos player, t_game *game, int height);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
+int		check_basic_validations(char **map, int height, int width);
+int		check_elements(char **map, int height, int width);
 
 //goyang-goyangg
 void	move_player_up(t_game *game);

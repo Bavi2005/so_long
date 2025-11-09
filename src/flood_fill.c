@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-# include "../library/libft/libft.h"
+#include "../library/libft/libft.h"
 
 static t_pos	find_char(char **map, t_pos start, char element, int height)
 {
@@ -88,4 +88,13 @@ int	flood_fill(char **map, int height, int width, t_game *game)
 	player = find_char(map_copy, start_pos, 'P', height);
 	game->player_pos = player;
 	return (path_checker(map_copy, player, game, height));
+}
+
+int	check_basic_validations(char **map, int height, int width)
+{
+	if (height < 3 || width < 3)
+		return (return_error("Invalid map: Too small or empty lines"));
+	if (check_elements(map, height, width) == 1)
+		return (return_error("Invalid map: Invalid element"));
+	return (0);
 }

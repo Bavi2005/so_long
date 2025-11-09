@@ -2,27 +2,36 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2025/11/08 23:52:31 by bpichyal          #+#    #+#             */
 /*   Updated: 2025/11/08 23:52:31 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 #include "../library/libft/get_next_line.h"
+#include "so_long.h"
 
 int	check_file_name(char *file_path)
 {
 	char	*base;
-	int	len;
+	int		len;
+	int		i;
 
+	i = 0;
 	base = ft_strrchr(file_path, '/');
-	base = base ? base + 1 : file_path;
-
+	if (base)
+		base = base + 1;
+	else
+		base = file_path;
 	len = ft_strlen(base);
-	if (len < 5 || ft_strncmp(base + len - 4, ".ber", 4) != 0)
+	if (len < 5)
+		return (1);
+	if (ft_strncmp(base + len - 4, ".ber", 4) != 0)
 		return (1);
 	if (base[0] == '.')
 		return (1);
@@ -52,10 +61,10 @@ static char	*file_reading(int fd)
 	return (buf);
 }
 
-static	char	*read_and_validate_file(char *file_path)
+static char	*read_and_validate_file(char *file_path)
 {
-	int		fd;
 	char	*buf;
+	int		fd;
 
 	if (check_file_name(file_path) == 1)
 	{

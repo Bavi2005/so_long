@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpichyal <bpichyal@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: bpichyal <bpichyal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:06:23 by bpichyal          #+#    #+#             */
-/*   Updated: 2025/11/09 00:07:43 by bpichyal         ###   ########.fr       */
+/*   Updated: 2025/11/09 14:17:12 by bpichyal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
-#include "libft.h"
+# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
